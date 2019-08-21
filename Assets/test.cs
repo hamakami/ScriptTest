@@ -23,14 +23,15 @@ public class Boss {
 	// 魔法攻撃用の関数
 	public void mpAttack(int consumption) { 
 		
-		// 残りmpを消費(consumption)
-		this.mp -= consumption;
-	
 		//mpの消費状態によって表示を変更
-		if (this.mp >= 0) {
+		if (this.mp >= consumption) {
+			// 残りmpを消費(consumption)
+			this.mp -= consumption;
 			Debug.Log ("魔法攻撃をした。残りMPは" + this.mp);
-		} else if (this.mp <= 0) { 
+		} else if (this.mp <= consumption) { 
 			Debug.Log ("mpが足りない。");
+			//処理が終了した後、残りmpは使用できなかった残りのmpの「3」であることを確認
+			Debug.Log ("残りのmpは"+this.mp);
 		}
 
 	}
